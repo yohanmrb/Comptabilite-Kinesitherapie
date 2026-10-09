@@ -1,0 +1,7 @@
+# Tes données financières : ne jamais les mettre sur GitHub
+data/
+.streamlit/secrets.toml
+
+__pycache__/
+.venv/
+*.pyc
