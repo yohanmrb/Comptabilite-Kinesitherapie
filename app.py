@@ -394,6 +394,17 @@ with st.expander("ℹ️ Comment c'est calculé ?"):
         """
 - **Encaissé** = honoraires + hors nomenclature (dépassements)
 - **Rétrocession** = % reversé au titulaire × encaissé (ou × honoraires seuls si tu décoches l'option)
+- **Résultat avant cotisations** = encaissé − rétrocession
+- **Cotisations** = résultat × % URSSAF + CARPIMKO (réglage dans la barre latérale)
+- **Net gagné** = résultat − cotisations
+- **Dans ma poche** = net gagné − impôt estimé (taux moyen fixe)
+
+Ce sont des **estimations** : les vraies cotisations sont calculées sur ton revenu annuel et régularisées
+l'année suivante, et l'impôt dépend de ta situation globale. Affine les pourcentages avec tes avis
+d'appel de cotisations et d'imposition, ou fais valider avec un comptable.
+        """
+    )
+
 
 st.divider()
 
@@ -406,13 +417,3 @@ st.markdown(
     """, 
     unsafe_allow_html=True
 )
-- **Résultat avant cotisations** = encaissé − rétrocession
-- **Cotisations** = résultat × % URSSAF + CARPIMKO (réglage dans la barre latérale)
-- **Net gagné** = résultat − cotisations
-- **Dans ma poche** = net gagné − impôt estimé (taux moyen fixe)
-
-Ce sont des **estimations** : les vraies cotisations sont calculées sur ton revenu annuel et régularisées
-l'année suivante, et l'impôt dépend de ta situation globale. Affine les pourcentages avec tes avis
-d'appel de cotisations et d'imposition, ou fais valider avec un comptable.
-        """
-    )
