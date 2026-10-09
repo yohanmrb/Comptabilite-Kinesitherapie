@@ -394,6 +394,18 @@ with st.expander("ℹ️ Comment c'est calculé ?"):
         """
 - **Encaissé** = honoraires + hors nomenclature (dépassements)
 - **Rétrocession** = % reversé au titulaire × encaissé (ou × honoraires seuls si tu décoches l'option)
+
+st.divider()
+
+st.markdown(
+    """
+    <div style="display: flex; justify-content: space-between; color: gray; font-size: 0.9em;">
+        <div>Version 1.0 - 10/2026</div>
+        <div>Par Yohan Mirabel</div>
+    </div>
+    """, 
+    unsafe_allow_html=True
+)
 - **Résultat avant cotisations** = encaissé − rétrocession
 - **Cotisations** = résultat × % URSSAF + CARPIMKO (réglage dans la barre latérale)
 - **Net gagné** = résultat − cotisations
