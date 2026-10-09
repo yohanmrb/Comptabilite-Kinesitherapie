@@ -193,13 +193,11 @@ def recap(d, p):
         return
     t = d[SOMMES].sum().to_dict()
 
-    c1, c2, c3, c4 = st.columns(4)
+    c1, c2, c3 = st.columns(3)
     c1.metric("Encaissé", eur(t["recettes"]), help="Honoraires + dépassements")
     c2.metric("Net gagné", eur(t["net"]), help="Après rétrocession et cotisations, avant impôt")
     c3.metric("💰 Dans ma poche", eur(t["poche"]),
               help="Net gagné − impôt estimé : ce que tu peux te virer sur ton compte perso")
-    c4.metric("À garder de côté", eur(t["cotisations"] + t["impot"]),
-              help="Cotisations URSSAF + CARPIMKO + impôt estimé")
 
     jours, patients = t["jours"], t["patients"]
     st.caption(
