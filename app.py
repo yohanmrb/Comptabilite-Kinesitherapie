@@ -41,10 +41,10 @@ CONFIG = {
     "semaine": st.column_config.NumberColumn("N° semaine", min_value=1, max_value=53, step=1, format="%d"),
     "jours": st.column_config.NumberColumn("Jours travaillés", min_value=0, max_value=7, step=1, format="%d"),
     "patients": st.column_config.NumberColumn("Patients", min_value=0, step=1, format="%d"),
-    "honoraires": st.column_config.NumberColumn("Honoraires (€)", min_value=0.0, step=0.01, format="%.2f",
-                                                help="Honoraires encaissés (actes de nomenclature)"),
-    "depassements": st.column_config.NumberColumn("Hors nomenclature (€)", min_value=0.0, step=0.01, format="%.2f",
-                                                  help="Dépassements d'honoraires"),
+     "honoraires": st.column_config.NumberColumn("Honoraires / patient (€)", min_value=0.0, step=0.01, format="%.2f",
+                                                help="Honoraires moyens par patient (nomenclature)"),
+    "depassements": st.column_config.NumberColumn("HN / patient (€)", min_value=0.0, step=0.01, format="%.2f",
+                                                  help="Hors nomenclature (dépassements) par patient"),
     "retro_pct": st.column_config.NumberColumn("Rétrocession (%)", min_value=0.0, max_value=100.0, step=0.5,
                                                format="%.1f", help="% reversé au titulaire"),
 }
@@ -128,6 +128,8 @@ def centimes(s):
 
 def calculer(df, p):
     d = df.copy()
+    d["honoraires"] = centimes(d["honoraires"] * d["patients"])
+    d["depassements"] = centimes(d["depassements"] * d["patients"])
     d["recettes"] = centimes(d["honoraires"] + d["depassements"])
     base_retro = d["recettes"] if p["retro_sur_depassements"] else d["honoraires"]
     d["retro"] = centimes(base_retro * d["retro_pct"] / 100)
